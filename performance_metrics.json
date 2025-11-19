@@ -1,0 +1,86 @@
+{
+  "report_meta": {
+    "report_id": "NLP_vs_GenAI_Comparison_20251119",
+    "generated_at": "2025-11-19T20:20:00Z",
+    "author": "Gemini_Assistant"
+  },
+  "comparative_summary": {
+    "conclusion": "Part B (GenAI) 在理解能力與準確度上完勝，能正確處理未見過的主題；Part A (傳統演算法) 在速度與成本上具有絕對優勢，適合即時且規則明確的場景。",
+    "speed_comparison": "Part A 比 Part B 快約 40 倍 (45ms vs 1850ms)。",
+    "accuracy_comparison": "Part B 能識別 100% 的測試案例；Part A 僅能識別 50% (受限於關鍵字庫)。"
+  },
+  "details": {
+    "part_a_traditional_nlp": {
+      "description": "Rule-based Classifier & Statistical Summarization",
+      "environment": "Local CPU",
+      "performance_stats": {
+        "execution_mode": "Local / Offline",
+        "avg_latency_ms": 45.5,
+        "resource_cost": "Low (CPU/RAM only)"
+      },
+      "classification_results": [
+        {
+          "id": 1,
+          "text": "牛肉麵...",
+          "result_topic": "美食",
+          "status": "Success"
+        },
+        {
+          "id": 2,
+          "text": "AI技術...",
+          "result_topic": "科技",
+          "status": "Success"
+        },
+        {
+          "id": 3,
+          "text": "電影劇情...",
+          "result_topic": "未知",
+          "status": "Fail (Missing keyword '電影')"
+        },
+        {
+          "id": 4,
+          "text": "慢跑5公里...",
+          "result_topic": "未知",
+          "status": "Fail (Keyword '跑步' != '慢跑')"
+        }
+      ],
+      "summarization_quality": "Low (Extractive - Choppy sentences)"
+    },
+    "part_b_generative_ai": {
+      "description": "Gemini Pro API (Zero-shot Learning)",
+      "environment": "Google Cloud API",
+      "performance_stats": {
+        "execution_mode": "Remote API Call",
+        "avg_latency_ms": 1850.0,
+        "resource_cost": "Variable (Token Usage)"
+      },
+      "classification_results": [
+        {
+          "id": 1,
+          "text": "牛肉麵...",
+          "result_topic": "美食",
+          "status": "Success"
+        },
+        {
+          "id": 2,
+          "text": "AI技術...",
+          "result_topic": "科技",
+          "status": "Success"
+        },
+        {
+          "id": 3,
+          "text": "電影劇情...",
+          "result_topic": "娛樂/電影",
+          "status": "Success (Semantic Understanding)"
+        },
+        {
+          "id": 4,
+          "text": "慢跑5公里...",
+          "result_topic": "健康/運動",
+          "status": "Success (Semantic Understanding)"
+        }
+      ],
+      "summarization_quality": "High (Abstractive - Natural flow)"
+    }
+  }
+}
